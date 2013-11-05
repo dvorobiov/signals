@@ -6,7 +6,7 @@ val commonSettings = Seq(
   organization := "com.makesense",
   version := "0.1",
   scalacOptions := Seq("-unchecked", "-deprecation"),
-  scalaVersion  := "2.10.2",
+  scalaVersion  := "2.10.3",
   resolvers ++= Seq (
     "Typesafe repo" at "http://repo.typesafe.com/typesafe/releases/",
     "Spray repo" at "http://repo.spray.io/"
