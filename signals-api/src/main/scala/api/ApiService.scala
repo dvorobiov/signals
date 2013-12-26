@@ -4,13 +4,9 @@ import scala.concurrent.duration._
 
 import akka.actor.Actor
 import spray.http._
-import spray.http.MediaTypes._
 import domain.{BookmarkCreate, Bookmark}
-import net.liftweb.json.JsonParser._
-import net.liftweb.json.Serialization._
 
 import net.liftweb.json.{Formats, DefaultFormats}
-import spray.httpx.unmarshalling._
 import spray.routing._
 import spray.httpx.LiftJsonSupport
 
