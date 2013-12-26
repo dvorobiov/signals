@@ -17,6 +17,7 @@ object Dependencies {
   val sprayCan = "io.spray" % "spray-can" % sprayVersion
   val sprayRouting = "io.spray" % "spray-routing" % sprayVersion
   val sprayJson = "io.spray" %%  "spray-json" % "1.2.5"
+  val liftJson = "net.liftweb" %% "lift-json" % "2.5.1"
   val akkaTestKit = "com.typesafe.akka" %% "akka-testkit" % akkaVersion
 
   val slick = "com.typesafe.slick" %% "slick" % "1.0.1"
@@ -33,7 +34,7 @@ object Dependencies {
   // projects
 
   val apiDependencies =
-    Seq(akkaActor, akkaSlf4j, logbackClassic, sprayCan, sprayRouting, sprayJson, slick, h2db, postgres) ++ commonDependencies
+    Seq(akkaActor, akkaSlf4j, logbackClassic, sprayCan, sprayRouting, sprayJson, liftJson, slick, h2db, postgres) ++ commonDependencies
 
   val persistenceDependencies =
     Seq() ++ commonDependencies
