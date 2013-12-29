@@ -6,9 +6,8 @@ case class Bookmark(
   id: Long,
   url: String,
   description: Option[String],
-  tags: Seq[String]
-  //,
-  //dateAdded: DateTime
+  tags: Seq[String],
+  dateAdded: DateTime
 )
 
 case class BookmarkCreate(
