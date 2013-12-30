@@ -1,4 +1,4 @@
-package api.processing
+package api.actors
 
 import akka.actor.{Actor, ActorLogging}
 import api.Create
