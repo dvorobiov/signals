@@ -1,4 +1,4 @@
-package api.services
+package api.endpoints
 
 import api.SignalsHttpService
 import spray.http.MediaTypes
@@ -7,7 +7,7 @@ import org.joda.time.DateTime
 import akka.actor.ActorRef
 import scala.concurrent.ExecutionContext
 
-class BookmarksService(bookmarkActor: ActorRef)(implicit executionContext: ExecutionContext) extends SignalsHttpService {
+class BookmarksEndpoint(bookmarkActor: ActorRef)(implicit executionContext: ExecutionContext) extends SignalsHttpService {
 
   val routes = respondWithMediaType(MediaTypes.`application/json`) {
 

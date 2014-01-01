@@ -3,7 +3,7 @@ package spray.examples
 import scala.concurrent.duration._
 import akka.actor.Actor
 import spray.routing._
-import api.services.BookmarksService
+import api.endpoints.BookmarksEndpoint
 
 class ApiService extends Actor with HttpService with Directives {
   val actorRefFactory = context
@@ -15,7 +15,7 @@ class ApiService extends Actor with HttpService with Directives {
 
   lazy val routes =
     defaultRoutes ~
-    new BookmarksService(null)(executionContext).routes
+    new BookmarksEndpoint(null)(executionContext).routes
 
   val defaultRoutes = pathSingleSlash {
     complete("not supported")

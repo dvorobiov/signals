@@ -21,9 +21,11 @@ object Dependencies {
   val liftJsonExt = "net.liftweb" %% "lift-json-ext" % "2.5.1"
   val akkaTestKit = "com.typesafe.akka" %% "akka-testkit" % akkaVersion
 
-  val slick = "com.typesafe.slick" %% "slick" % "1.0.1"
-  val h2db = "com.h2database" % "h2" % "1.3.166" % "test"
+  val slick = "com.typesafe.slick" %% "slick" % "2.0.0-RC1"
+  val h2db = "com.h2database" % "h2" % "1.3.170" % "test"
   val postgres = "org.postgresql" % "postgresql" % "9.2-1002-jdbc4"
+  val slickPostgres = "com.github.tminglei" % "slick-pg_2.10.1" % "0.2.2"
+
 
   val joda =  "joda-time" % "joda-time" % "2.2"
   val jodaConvert = "org.joda" % "joda-convert" % "1.3.1"
@@ -35,7 +37,8 @@ object Dependencies {
   // projects
 
   val apiDependencies =
-    Seq(akkaActor, akkaSlf4j, logbackClassic, sprayCan, sprayRouting, liftJson, liftJsonExt, slick, h2db, postgres) ++ commonDependencies
+    Seq(akkaActor, akkaSlf4j, logbackClassic, sprayCan, sprayRouting, liftJson, liftJsonExt, slick,
+      h2db, postgres, slickPostgres) ++ commonDependencies
 
   val persistenceDependencies =
     Seq() ++ commonDependencies
