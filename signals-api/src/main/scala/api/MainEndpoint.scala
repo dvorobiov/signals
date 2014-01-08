@@ -6,10 +6,15 @@ import spray.routing._
 import api.endpoints.BookmarksEndpoint
 import reactivemongo.api.MongoDriver
 import com.typesafe.config.ConfigFactory
+import reactivemongo.bson.BSONDocument
+import reactivemongo.api._
+import reactivemongo.bson._
+import reactivemongo.api.collections.default.BSONCollection
+
 
 class MainEndpoint extends Actor with HttpService with Directives {
   val actorRefFactory = context
-  val executionContext = context.dispatcher
+  implicit val executionContext = context.dispatcher
 
   val receiveTimeout: Duration = 2 seconds
   val driver = new MongoDriver
@@ -19,7 +24,7 @@ class MainEndpoint extends Actor with HttpService with Directives {
   val dbName = conf.getString("mongodb.db_name")
 
   val connection = driver.connection(List(mongoUrl))
-  def db = connection.db(dbName)
+  lazy val db = connection.db(dbName)
 
   def receive = runRoute(routes)
 

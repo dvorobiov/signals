@@ -4,12 +4,11 @@ import api.SignalsHttpService
 import spray.http.MediaTypes
 import domain.{Bookmark, BookmarkCreate}
 import org.joda.time.DateTime
-import akka.actor.ActorRef
 import scala.concurrent.ExecutionContext
-import reactivemongo.api.{DefaultDB, MongoConnection}
+import reactivemongo.api.{DefaultDB}
 import reactivemongo.bson.BSONObjectID
 import reactivemongo.api.collections.default.BSONCollection
-import akka.actor.Status.{Failure, Success}
+import scala.util.{Success, Failure}
 
 // TODO: to provide actor not connection after finishing testing
 class BookmarksEndpoint(db: => DefaultDB)(implicit executionContext: ExecutionContext) extends SignalsHttpService {
@@ -21,11 +20,10 @@ class BookmarksEndpoint(db: => DefaultDB)(implicit executionContext: ExecutionCo
         entity(as[BookmarkCreate]) { bookmarkCreate =>
           complete {
             val bookmark = Bookmark.fromBookmarkCreate(bookmarkCreate)
-            collection.insert(bookmark).onComplete {
-              case Failure(e) => "error"
-              case Success(lastError) => "super!"
+            collection.insert(bookmark).andThen {
+              case Failure(e) => complete("error")
+              case Success(lastError) => complete("super!")
             }
-            s"done with name: ${bookmark.description}"
             // call actor to create a new bookmark, return created or conflict
           }
         }
